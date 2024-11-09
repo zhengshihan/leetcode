@@ -1,0 +1,27 @@
+class Solution {
+    public int findNonOverlapping(int[][] points) {
+        if(points.length == 0) return 0;
+         Arrays.sort(points, (a, b) -> Integer.compare(a[1], b[1]));
+        int count = 1;
+        int x_end = points[0][1];
+        for(int[]point : points){
+          int  x_start = point[0];
+//注意这里 >=
+            if(x_start >= x_end){
+
+                count++;
+                x_end = point[1];
+            }
+        }
+        return count;
+
+        
+    }
+    public int eraseOverlapIntervals(int[][] intervals) {
+        int non = findNonOverlapping(intervals);
+        int result = intervals.length - non;
+        return result;
+
+        
+    }
+}
