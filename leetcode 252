@@ -1,0 +1,25 @@
+class Solution {
+
+    // Function to check if a person can attend all meetings
+    public boolean canAttendMeetings(int[][] intervals) {
+      
+        // Sort the intervals based on the start times
+        Arrays.sort(intervals, (interval1, interval2) -> interval1[0] - interval2[0]);
+      
+        // Iterate through the sorted intervals to check for any overlaps
+        for (int i = 1; i < intervals.length; ++i) {
+            // Get the current and previous intervals
+            int[] currentInterval = intervals[i];
+            int[] previousInterval = intervals[i - 1];
+          
+            // If the end time of the previous interval is greater than the start time of the current one,
+            // they overlap, so it's not possible to attend all meetings
+            if (previousInterval[1] > currentInterval[0]) {
+                return false;
+            }
+        }
+      
+        // If there are no overlaps, the person can attend all meetings
+        return true;
+    }
+}
