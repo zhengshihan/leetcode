@@ -1,0 +1,17 @@
+class Solution {
+    List<Integer> result = new LinkedList<>();
+    public List<Integer> preorderTraversal(TreeNode root) {
+        traverse(root);
+        return result;
+        
+    }
+    void traverse(TreeNode root){
+        if(root == null){
+            return;
+        }
+//前序 中序 后序 只要修改代码位置即可
+        result.add(root.val);
+        traverse(root.left);
+        traverse(root.right);
+    }
+}
