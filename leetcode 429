@@ -31,6 +31,7 @@ class Solution {
             for(int i =0; i < sz;i++){
                 Node cur = q.poll();
                 level.add(cur.val);
+//只有这一部分和二叉树层序遍历不一样
                 for(Node child : cur.children){
                     q.offer(child);
                 }
